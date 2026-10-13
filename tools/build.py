@@ -309,9 +309,9 @@ NOT_FOUND_MAIN = """  <section class="page-hero">
 # ---------------------------------------------------------------------------- build
 for generated in ["index.html", "404.html", "sitemap.xml", "robots.txt"]:
     (OUT / generated).unlink(missing_ok=True)
-for folder in ["recipes", "css"]:
-    shutil.rmtree(OUT / folder, ignore_errors=True)
-shutil.copytree(SRC / "css", OUT / "css")
+shutil.rmtree(OUT / "recipes", ignore_errors=True)
+# Overwrite in place (OneDrive can briefly lock a folder, which makes delete-then-copy fail)
+shutil.copytree(SRC / "css", OUT / "css", dirs_exist_ok=True)
 
 # Homepage
 home = (SRC / "index.html").read_text(encoding="utf-8")

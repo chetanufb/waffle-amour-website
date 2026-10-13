@@ -1,0 +1,124 @@
+/* ==========================================================================
+   Waffle Amour: Dark Chocolate theme
+   Loaded after each page's own <style>, restyles the light site in the
+   look of the "UK's No.1" section: deep chocolate, gold glow, honeycomb.
+   ========================================================================== */
+:root{
+  --choc-950:#0f0a07;
+  --choc-900:#160f0b;
+  --choc-800:#1e1510;
+  --choc-700:#281c15;
+  --choc-600:#34251b;
+  --choc-500:#46321f;
+  --text:#f5ead8;
+  --text-soft:#d9cbb6;
+  --muted:#ab9a84;
+  --line:rgba(201,162,74,.22);
+  --cream:var(--choc-900);
+  --paper:var(--choc-800);
+  --sand:var(--choc-700);
+  --shadow:0 22px 60px -24px rgba(0,0,0,.85);
+  --glow:radial-gradient(ellipse at 50% 0%,rgba(90,62,38,.55) 0%,transparent 60%);
+}
+
+/* ---------- Base ---------- */
+body{background:var(--choc-900);color:var(--text)}
+h1,h2,h3{color:var(--text)}
+.eyebrow{color:var(--gold-2)}
+.script{color:var(--gold-2)}
+.sec-head p,.rt-head p{color:var(--text-soft)}
+.divider{color:var(--gold)}
+::selection{background:var(--gold);color:var(--choc-950)}
+
+/* Every light section becomes chocolate with a soft top glow + honeycomb */
+#range,#recipes,#quality,#serve,.listing,.detail{
+  position:relative;
+  background:var(--glow),linear-gradient(180deg,var(--choc-800),var(--choc-900));
+}
+#recipes,#serve{background:var(--glow),linear-gradient(180deg,var(--choc-900),var(--choc-950))}
+#quality::before,#serve::before,#recipes::before,.listing::before,.detail::before{
+  content:"";position:absolute;inset:0;background:var(--hex);opacity:.45;pointer-events:none
+}
+#quality>.wrap,#serve>.wrap,#recipes>.wrap,.listing>.wrap,.detail>.wrap{position:relative}
+#range::before{opacity:.45}
+/* thin gold seam between sections */
+#range,#recipes,#quality,#serve,#story,#contact{border-top:1px solid rgba(201,162,74,.14)}
+
+/* ---------- Buttons, filters, chips ---------- */
+.filter{background:rgba(255,255,255,.04);border-color:var(--line);color:var(--text-soft)}
+.filter:hover{border-color:var(--gold);color:var(--text)}
+.filter.active{background:linear-gradient(135deg,var(--gold-2),var(--gold) 55%,var(--gold-deep));color:var(--choc-950);border-color:transparent}
+.chip{background:rgba(201,162,74,.12);color:var(--gold-2)}
+.more,.r-go{color:var(--gold-2)}
+.link:hover{color:var(--gold-2)}
+
+/* ---------- Product cards (Our Range) ---------- */
+.card{background:linear-gradient(180deg,var(--choc-700),var(--choc-800));border-color:var(--line)}
+.card:hover{box-shadow:var(--shadow),0 0 0 1px rgba(201,162,74,.45)}
+.card-img{background:radial-gradient(circle at 50% 55%,#4a3524 0%,var(--choc-800) 75%)}
+.card-body p{color:var(--text-soft)}
+.tag{background:var(--choc-950);color:var(--gold-2);border:1px solid rgba(201,162,74,.4)}
+
+/* ---------- Recipes teaser (home) ---------- */
+.rt-card{background:radial-gradient(circle at 50% 35%,#4a3524 0%,var(--choc-800) 75%);border-color:var(--line);color:var(--text)}
+.rt-card .r-tag{background:var(--choc-950);border:1px solid rgba(201,162,74,.4)}
+.rt-pills a{background:rgba(255,255,255,.04);border-color:var(--line);color:var(--text-soft)}
+.rt-pills a:hover{border-color:var(--gold);color:var(--text)}
+
+/* ---------- Quality pillars ---------- */
+.pillar{background:linear-gradient(180deg,var(--choc-700),var(--choc-800));border-color:var(--line)}
+.pillar p{color:var(--text-soft)}
+.pillar:hover{box-shadow:var(--shadow),0 0 0 1px rgba(201,162,74,.45)}
+
+/* ---------- Serving ideas: three chocolate tones instead of brown/red/purple ---------- */
+.s1{background:linear-gradient(150deg,#2a1b12,#5a3622)}
+.s2{background:linear-gradient(150deg,#3b2414,#8a5a2b)}
+.s3{background:linear-gradient(150deg,#1d130d,#4a3020)}
+.serve{border:1px solid var(--line)}
+.serve .num{color:var(--gold-2);opacity:.35}
+
+/* ---------- Story / contact / no.1 sit on the deepest tone ---------- */
+#story{background:radial-gradient(ellipse at 30% 40%,#3a2a1c 0%,var(--choc-950) 65%)}
+#contact{background:radial-gradient(ellipse at 70% 30%,#3a2a1c 0%,var(--choc-950) 65%)}
+.story-copy p,.contact-copy p{color:var(--text-soft)}
+#no1{background:radial-gradient(ellipse at 50% 30%,#3a2a1c 0%,var(--choc-950) 65%)}
+.sk-bridge{fill:var(--choc-950)}
+.marquee{color:var(--choc-950)}
+
+/* ---------- Header / footer ---------- */
+header.scrolled,
+body:has(.page-hero) header,
+body:has(#detailView:not([hidden])) header{background:rgba(15,10,7,.94)}
+footer{background:var(--choc-950);border-top:1px solid rgba(201,162,74,.18)}
+.foot{border-bottom-color:rgba(201,162,74,.15)}
+.theme-switch{color:var(--gold-2);text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- Product modal ---------- */
+.modal-box{background:linear-gradient(180deg,var(--choc-700),var(--choc-800));border:1px solid var(--line);color:var(--text)}
+.modal-img{background:radial-gradient(circle,#4a3524,var(--choc-900))}
+.modal-info p,.nutri-note{color:var(--text-soft)}
+.nutri div{border-color:var(--line);color:var(--muted)}
+.nutri b{color:var(--text)}
+.nutri small{color:var(--gold-2)}
+.close{background:var(--gold);color:var(--choc-950)}
+
+/* ---------- Recipes page ---------- */
+.page-hero{background:radial-gradient(ellipse at 75% 30%,#3a2a1c 0%,var(--choc-950) 65%)}
+.r-card{background:linear-gradient(180deg,var(--choc-700),var(--choc-800));border-color:var(--line)}
+.r-card:hover{box-shadow:var(--shadow),0 0 0 1px rgba(201,162,74,.45)}
+.r-body p,.r-meta{color:var(--text-soft)}
+.r-visual,.d-visual{background:radial-gradient(circle at 50% 55%,#4a3524 0%,var(--choc-800) 75%);border-color:var(--line)}
+.r-num{color:var(--gold-2)}
+.r-cat{background:var(--choc-950);border:1px solid rgba(201,162,74,.4)}
+.crumb{color:var(--muted)}
+.d-kicker{color:var(--gold-2)}
+.d-intro,.d-meta{color:var(--text-soft)}
+.start,.twist{background:linear-gradient(135deg,var(--choc-700),var(--choc-600));border:1px solid var(--line)}
+.start small{color:var(--muted)}
+.ing,.steps{color:var(--text)}
+.ing li.opt{color:var(--muted)}
+.steps li::before{color:var(--gold-2)}
+.more-recipes{border-top-color:var(--line)}
+.cta{background:radial-gradient(ellipse at 50% 0%,#3a2a1c 0%,var(--choc-950) 65%);border-top:1px solid rgba(201,162,74,.14)}
+
+@media print{body{background:#fff;color:#000}h1,h2,h3,.ing,.steps{color:#000}}

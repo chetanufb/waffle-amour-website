@@ -1,42 +1,31 @@
 # Netlify settings for the Waffle Amour website.
-# Plain static site: nothing to build, publish the repository as-is.
+# The finished site is generated into public/ by tools/build.py and committed,
+# so Netlify only has to publish that folder (no build step).
 [build]
-  publish = "."
+  publish = "public"
   command = ""
 
-# Visitors land on the finished site (dark by default; the header toggle
-# switches to light and remembers the choice). "force = true" makes these
-# apply even though the source pages exist at the same paths.
+# Old addresses from before the single-site structure -> their new home
 [[redirects]]
-  from = "/"
-  to = "/dark/"
-  status = 302
-  force = true
-
-[[redirects]]
-  from = "/index.html"
-  to = "/dark/"
+  from = "/dark/recipes.html"
+  to = "/recipes/"
   status = 301
-  force = true
-
+[[redirects]]
+  from = "/light/recipes.html"
+  to = "/recipes/"
+  status = 301
 [[redirects]]
   from = "/recipes.html"
-  to = "/dark/recipes.html"
+  to = "/recipes/"
   status = 301
-  force = true
-
-# Build tools and repository notes are not part of the public site.
 [[redirects]]
-  from = "/tools/*"
-  to = "/dark/"
-  status = 302
-  force = true
-
+  from = "/dark/*"
+  to = "/"
+  status = 301
 [[redirects]]
-  from = "/README.md"
-  to = "/dark/"
-  status = 302
-  force = true
+  from = "/light/*"
+  to = "/"
+  status = 301
 
 # Basic security headers
 [[headers]]

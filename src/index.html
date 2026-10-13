@@ -1,20 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>document.documentElement.classList.add('js')</script>
-<title>Waffle Amour — With love… from Belgium</title>
-<meta name="description" content="Waffle Amour: authentic Liège sugar waffles, chocolate waffles and Belgian style toasting waffles.">
+<title>@@TITLE@@</title>
+<meta name="description" content="@@DESC@@">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#1e140e">
-<meta property="og:type" content="website">
+<meta property="og:type" content="@@OG_TYPE@@">
 <meta property="og:site_name" content="Waffle Amour">
-<meta property="og:title" content="Waffle Amour — UK's No.1 Sugar Waffle Brand">
-<meta property="og:description" content="Authentic Belgian waffles, made with love. Liège sugar waffles, chocolate waffles, toasting waffles and recipe ideas.">
-<meta property="og:image" content="images/share.jpg">
+<meta property="og:title" content="@@OG_TITLE@@">
+<meta property="og:description" content="@@OG_DESC@@">
+<meta property="og:image" content="@@OG_IMAGE@@">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -333,6 +333,7 @@ footer{background:#0d0b09;color:#a99d8c;padding:60px 0 30px;font-size:.92rem}
 .foot ul a{display:inline-block;padding:6px 0}
 .theme-switch{display:inline-block;padding:8px 0}
 </style>
+<!--@HEAD_EXTRA-->
 </head>
 <body>
 
@@ -417,7 +418,10 @@ footer{background:#0d0b09;color:#a99d8c;padding:60px 0 30px;font-size:.92rem}
       <button class="filter" data-filter="toast" role="tab" aria-selected="false">Toasting Waffles<span class="n"></span></button>
       <button class="filter" data-filter="heart" role="tab" aria-selected="false">Heart Waffles<span class="n"></span></button>
     </div>
-    <div class="grid" id="grid"></div>
+    <div class="grid" id="grid">
+<!--@PRODUCT_CARDS-->
+    </div>
+    <script type="application/json" id="products-data"><!--@PRODUCTS_JSON--></script>
   </div>
 </section>
 
@@ -611,54 +615,10 @@ footer{background:#0d0b09;color:#a99d8c;padding:60px 0 30px;font-size:.92rem}
 </div>
 
 <script>
-const products = [
-  {id:"sugar-pearl-single", cat:"sugar", catName:"Liège Sugar Waffles", name:"Sugar Pearl Waffle", tone:"light", tag:"Single",
-   desc:"A single, individually wrapped Liège waffle with caramelised pearl sugar. The perfect on-the-go treat.",
-   chips:["1 waffle","Individually wrapped"], facts:["Made in Belgium","Buttery brioche-style dough","Caramelised pearl sugar"]},
-  {id:"sugar-5", cat:"sugar", catName:"Liège Sugar Waffles", name:"5 Sugar Waffles", tone:"light", tag:"Pack of 5",
-   desc:"Five golden Liège waffles in a handy bag, with crunchy caramelised sugar in every bite.",
-   chips:["5 waffles","Sharing bag"], facts:["Made in Belgium","Caramelised pearl sugar","Great warmed or cold"]},
-  {id:"sugar-7", cat:"sugar", catName:"Liège Sugar Waffles", name:"7 Sugar Waffles", tone:"light", tag:"Pack of 7",
-   desc:"Seven classic Liège sugar waffles: one for every day of the week (or all at once, we won't tell).",
-   chips:["7 waffles","Family pack"], facts:["Made in Belgium","Caramelised pearl sugar","Flow-wrapped for freshness"]},
-  {id:"choco-single", cat:"choco", catName:"Choco Waffles", name:"Choco Waffle", tone:"dark", tag:"Single",
-   desc:"A Liège waffle fully coated in smooth chocolate, individually wrapped for an indulgent moment anywhere.",
-   chips:["1 waffle","Chocolate coated"], facts:["Made in Belgium","Fully chocolate coated","Individually wrapped"]},
-  {id:"choco-5", cat:"choco", catName:"Choco Waffles", name:"5 Choco Waffles", tone:"dark", tag:"Pack of 5",
-   desc:"Five Liège waffles with a chocolate-dipped base. Crunchy, buttery and generously chocolatey.",
-   chips:["5 waffles","Rainforest Alliance cocoa"], facts:["Made in Belgium","Chocolate-dipped base","Rainforest Alliance certified cocoa"]},
-  {id:"choco-7", cat:"choco", catName:"Choco Waffles", name:"7 Choco Waffles", tone:"dark", tag:"Pack of 7",
-   desc:"Seven chocolate-dipped Liège waffles in our signature black and gold pack.",
-   chips:["7 waffles","Family pack"], facts:["Made in Belgium","Chocolate-dipped base","Flow-wrapped for freshness"]},
-  {id:"toasting-8", cat:"toast", catName:"Belgian Style Toasting Waffles", name:"8 Belgian Style Toasting Waffles", tone:"yellow", tag:"4×2 twin wrapped",
-   desc:"Light, golden waffles made for the toaster. Ready in minutes for breakfast, brunch or dessert.",
-   chips:["8 waffles","Twin wrapped"], facts:["Toaster friendly","4 × 2 twin wrapped for freshness","Top with fruit, cream or chocolate"],
-   nutri:{serving:"1 waffle (25g)", per100:"1975 kJ / 494 kcal", v:[["Energy","494 kJ / 119 kcal","6%"],["Fat","7.5g","11%"],["Saturates","2.2g","11%"],["Sugars","6.3g","7%"],["Salt","0.14g","2%"]]}},
-  {id:"toasting-large-6", cat:"toast", catName:"Belgian Style Toasting Waffles", name:"6 Large Belgian Style Toasting Waffles", tone:"yellow", tag:"Large",
-   desc:"Our biggest toasting waffles. Deep pockets just waiting for butter, syrup or a scoop of ice cream.",
-   chips:["6 large waffles","Toaster friendly"], facts:["Extra-large size","Toast until golden and crisp","Perfect for loaded toppings"],
-   nutri:{serving:"1 waffle (41.67g)", per100:"2113 kJ / 507 kcal", v:[["Energy","880 kJ / 211 kcal","11%"],["Fat","13.7g","20%"],["Saturates","3.4g","17%"],["Sugars","10g","11%"],["Salt","0.24g","4%"]]}},
-  {id:"choco-hazelnut-8", cat:"toast", catName:"Belgian Style Waffles", name:"8 Chocolate & Hazelnut Flavour Waffles", tone:"lilac", tag:"4×2 twin wrapped",
-   desc:"Belgian style waffles with chocolate and hazelnut flavour filling in every pocket.",
-   chips:["8 waffles","Twin wrapped"], facts:["Chocolate & hazelnut flavour","4 × 2 twin wrapped for freshness","Delicious with ice cream"],
-   nutri:{serving:"1 waffle (34g)", per100:"2081 kJ / 500 kcal", v:[["Energy","708 kJ / 170 kcal","9%"],["Fat","10g","14%"],["Saturates","5.3g","27%"],["Sugars","14g","15%"],["Salt","0.23g","4%"]]}},
-  {id:"dusted-heart", cat:"heart", catName:"Belgian Style Heart Waffles", name:"Dusted Heart Waffles with Vanilla", tone:"sky", tag:"165g",
-   desc:"Delicate heart-shaped waffles with a hint of vanilla and a light dusting of sugar.",
-   chips:["165g","Vanilla"], facts:["Heart-shaped","Flavoured with vanilla","Lovely with cream and berries"]}
-];
+// Product data is written into the page by tools/build.py (from src/data/products.json)
+const products = JSON.parse(document.getElementById('products-data').textContent);
 
 const grid = document.getElementById('grid');
-grid.innerHTML = products.map(p => `
-  <article class="card reveal" data-cat="${p.cat}" data-tone="${p.tone}" data-id="${p.id}" tabindex="0" aria-label="${p.name}, view details">
-    <div class="card-img"><span class="tag">${p.tag}</span><img src="images/${p.id}.webp" alt="Waffle Amour ${p.name} pack" loading="lazy" decoding="async"></div>
-    <div class="card-body">
-      <span class="eyebrow" style="font-size:.74rem">${p.catName}</span>
-      <h3>${p.name}</h3>
-      <p>${p.desc}</p>
-      <div class="meta">${p.chips.map(c=>`<span class="chip">${c}</span>`).join('')}</div>
-      <span class="more">View details <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-    </div>
-  </article>`).join('');
 
 // Filter counts + behaviour
 const filters = document.querySelectorAll('.filter');

@@ -5,21 +5,28 @@ Brand website for Waffle Amour: authentic Belgian waffles, made with love.
 ## Structure
 | Path | What it is |
 |---|---|
-| `index.html`, `recipes.html` | Source pages (edit these) |
-| `dark/` | Built site that opens in Dark Chocolate mode, plus `theme-choc.css` |
-| `light/` | Built site that opens in All-Light mode, plus `theme-light.css` |
-| `images/`, `videos/` | Shared media (packs, logos, recipe photos + `recipes/thumb/` card versions) |
-| `tools/build_themes.py` | Rebuilds `dark/` and `light/` from the source pages |
+| `src/index.html` | Homepage template (edit this) |
+| `src/recipes.html` | Shared page shell for the recipe list, each recipe page and the 404 page |
+| `src/data/products.json` | The product range (names, descriptions, nutrition) |
+| `src/data/recipes.json` | The 13 recipes |
+| `src/css/` | Dark Chocolate and All-Light theme styles |
+| `public/` | **The published site** — generated pages plus images, video and icons |
+| `tools/build.py` | Generates the pages in `public/` from `src/` |
 
-Both built versions include a light/dark toggle in the header that remembers the visitor's choice.
+Every page has a light/dark toggle in the header (dark by default) that remembers the visitor's choice.
+Each recipe has its own page at `/recipes/<recipe-name>/` with Recipe structured data.
 
-## After editing a source page
+## After editing anything in `src/`
 ```bash
-python tools/build_themes.py
+python tools/build.py
 ```
+Then commit and push; Netlify publishes `public/` automatically.
+
+When the domain is live, set `SITE_URL` at the top of `tools/build.py` and rebuild: this adds
+canonical links, full share-image addresses, `sitemap.xml` and `robots.txt`.
 
 ## Preview locally
 ```bash
-python -m http.server 8765
+python -m http.server 8765 --directory public
 ```
-Then open http://localhost:8765/dark/ or http://localhost:8765/light/
+Then open http://localhost:8765/

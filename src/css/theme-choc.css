@@ -60,8 +60,6 @@ h1,h2,h3{color:var(--text)}
 .tag{background:var(--choc-950);color:var(--gold-2);border:1px solid rgba(201,162,74,.4)}
 
 /* ---------- Recipes teaser (home) ---------- */
-.rt-card{background:radial-gradient(circle at 50% 35%,#4a3524 0%,var(--choc-800) 75%);border-color:var(--line);color:var(--text)}
-.rt-card .r-tag{background:var(--choc-950);border:1px solid rgba(201,162,74,.4)}
 .rt-pills a{background:rgba(255,255,255,.04);border-color:var(--line);color:var(--text-soft)}
 .rt-pills a:hover{border-color:var(--gold);color:var(--text)}
 

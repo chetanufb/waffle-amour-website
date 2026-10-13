@@ -34,6 +34,7 @@ SHARE_IMAGE = "/images/share.jpg"
 # ---------------------------------------------------------------------------- light/dark toggle
 THEME_HEAD = """<link id="css-dark" rel="stylesheet" href="/css/theme-choc.css" media="{dark_media}">
 <link id="css-light" rel="stylesheet" href="/css/theme-light.css" media="{light_media}">
+<link rel="stylesheet" href="/css/cards.css">
 <script>
 /* Theme: the site default unless the visitor picked one before. Runs before paint. */
 (function(){{var t='{default}',s;try{{s=localStorage.getItem('wa-theme')}}catch(e){{}}
@@ -317,6 +318,8 @@ shutil.copytree(SRC / "css", OUT / "css", dirs_exist_ok=True)
 home = (SRC / "index.html").read_text(encoding="utf-8")
 home = home.replace("<!--@PRODUCT_CARDS-->", "\n".join(product_card(p) for p in products))
 home = home.replace("<!--@PRODUCTS_JSON-->", json_for_html(products))
+FEATURED = ["full-english-waffle", "eton-mess-waffles", "sticky-toffee-waffles"]
+home = home.replace("<!--@FEATURED_RECIPES-->", "\n".join(recipe_card(next(r for r in recipes if r["slug"] == slug)) for slug in FEATURED))
 write("index.html", finish(home, path="/",
     title="Waffle Amour | Authentic Belgian Waffles — UK's No.1 Sugar Waffle Brand",
     desc="Authentic Belgian waffles from Waffle Amour, the UK's No.1 sugar waffle brand: Liège sugar waffles, chocolate waffles and toasting waffles, plus easy waffle recipes.",

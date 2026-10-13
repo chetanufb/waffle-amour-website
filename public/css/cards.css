@@ -1,0 +1,110 @@
+/* ==========================================================================
+   Waffle Amour: one card system for every card on the site
+   (product cards, recipe cards, "Why Waffle Amour", "Make it yours").
+   Loaded after the theme stylesheets, so it has the final say.
+   Rule: cards are a plain surface. Texture (honeycomb) lives only on the
+   section backgrounds behind them, never inside a card.
+   ========================================================================== */
+
+/* ---------- Tokens per theme ---------- */
+:root,[data-theme="dark"]{
+  --card-bg:linear-gradient(180deg,#281c15 0%,#1e1510 100%);
+  --card-border:rgba(201,162,74,.22);
+  --card-border-hover:rgba(201,162,74,.6);
+  --card-media:radial-gradient(circle at 50% 55%,#46321f 0%,#1e1510 78%);
+  --card-text:#f5ead8;
+  --card-soft:#d0c1ab;
+  --card-accent:#e8cf8a;
+  --card-tag-bg:#0f0a07;
+  --card-chip-bg:rgba(201,162,74,.13);
+  --card-shadow:0 24px 50px -28px rgba(0,0,0,.75);
+}
+[data-theme="light"]{
+  --card-bg:#ffffff;
+  --card-border:rgba(122,90,40,.16);
+  --card-border-hover:rgba(166,124,43,.55);
+  --card-media:radial-gradient(circle at 50% 55%,#ffffff 0%,#f3ebdc 100%);
+  --card-text:#1f1611;
+  --card-soft:#5e5247;
+  --card-accent:#85621e;
+  --card-tag-bg:#1f1611;
+  --card-chip-bg:#f4ede0;
+  --card-shadow:0 24px 50px -30px rgba(80,55,20,.35);
+}
+
+/* ---------- Shared surface ---------- */
+.card,.r-card,.pillar,.serve,.s1,.s2,.s3{
+  background:var(--card-bg);
+  border:1px solid var(--card-border);
+  border-radius:18px;
+  color:var(--card-text);
+  box-shadow:none;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s;
+}
+.card:hover,.r-card:hover,.pillar:hover,.serve:hover{
+  transform:translateY(-5px);
+  border-color:var(--card-border-hover);
+  box-shadow:var(--card-shadow);
+}
+/* no texture inside cards */
+.serve::before,.r-visual::before,.card-img::before{display:none}
+
+/* ---------- Media area (products and recipes) ---------- */
+.card-img,.r-visual{background:var(--card-media);aspect-ratio:4/3}
+
+/* ---------- Text ---------- */
+.card-body,.r-body{padding:22px 22px 24px;gap:8px}
+.card-body h3,.r-body h3,.pillar h3,.serve h3{font-size:1.25rem;font-weight:600;line-height:1.3;letter-spacing:-.01em;color:var(--card-text)}
+.card-body p,.r-body p,.pillar p,.serve p,.r-meta{color:var(--card-soft);opacity:1;font-size:.94rem}
+.card-body .eyebrow{color:var(--card-accent)}
+.more,.r-go{color:var(--card-accent);font-weight:600;font-size:.88rem}
+.r-meta svg{color:var(--card-accent)}
+
+/* ---------- Labels ---------- */
+.tag,.r-cat{
+  top:14px;left:14px;z-index:3;
+  background:var(--card-tag-bg);color:#e8cf8a;border:1px solid rgba(201,162,74,.45);
+  font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  padding:5px 10px;border-radius:999px;
+}
+.chip{background:var(--card-chip-bg);color:var(--card-accent)}
+
+/* ---------- Why Waffle Amour (centred feature cards) ---------- */
+.pillar{padding:30px 24px}
+.pillar h3{margin-bottom:8px}
+
+/* ---------- Make it yours ---------- */
+.serve{padding:30px;min-height:230px}
+.serve .num{color:var(--card-accent);opacity:.3}
+.serve h3{margin-bottom:8px}
+
+/* ---------- Recipe card structure (shared by homepage and recipes pages) ---------- */
+.r-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:26px}
+.r-card{overflow:hidden;display:flex;flex-direction:column}
+.r-card[hidden]{display:none}
+.r-visual{position:relative;display:grid;place-items:center;overflow:hidden}
+.r-visual .pack{position:absolute;top:14%;left:10%;width:80%;height:72%;object-fit:contain;filter:drop-shadow(0 14px 16px rgba(0,0,0,.28));transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.r-card:hover .r-visual .pack{transform:scale(1.05) rotate(-2deg)}
+.r-num{position:absolute;left:18px;bottom:8px;font-weight:800;font-size:3.2rem;line-height:1;color:var(--card-accent);opacity:.28}
+.r-cat{position:absolute}
+.r-body{display:flex;flex-direction:column;flex:1}
+.r-meta{display:flex;gap:14px;font-size:.84rem;margin-top:auto;padding-top:10px;align-items:center}
+.r-meta span{display:inline-flex;align-items:center;gap:6px}
+.r-meta svg{width:15px;height:15px}
+.r-go{margin-left:auto}
+.photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .4s,transform .7s cubic-bezier(.2,.8,.2,1)}
+.has-photo .photo{opacity:1}
+.has-photo .pack{top:auto;left:auto;right:14px;bottom:14px;width:32%;height:auto;max-height:42%;z-index:2;filter:drop-shadow(0 8px 12px rgba(0,0,0,.45))}
+.has-photo .r-num{display:none}
+.has-photo::after{content:"Serving suggestion";position:absolute;left:14px;bottom:12px;z-index:2;color:#fff;font-size:.7rem;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.7)}
+.r-card:hover .has-photo .photo{transform:scale(1.05)}
+.r-card:hover .has-photo .pack{transform:rotate(-3deg)}
+
+/* Homepage featured recipes use the same cards in a three-up row */
+.rt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+@media (max-width:980px){.rt-grid{grid-template-columns:1fr 1fr}.rt-grid .r-card:first-child{grid-column:auto}}
+@media (max-width:640px){.rt-grid{grid-template-columns:1fr}}
+
+/* Recipe-page panels match the card surface */
+.start,.twist{background:var(--card-bg);border:1px solid var(--card-border);border-radius:18px;color:var(--card-text)}
+.start small{color:var(--card-soft)}

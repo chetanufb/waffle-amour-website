@@ -1,0 +1,119 @@
+/* ==========================================================================
+   Waffle Amour: All-Light theme
+   Loaded after each page's own <style>. Every section that is dark in the
+   base pages (header, hero, intro, No.1, story, serving ideas, contact,
+   footer, recipes hero/CTA) becomes cream, white or soft sand.
+   ========================================================================== */
+:root{
+  --cream:#fbf6ec;
+  --paper:#ffffff;
+  --sand:#f3e9da;
+  --sand-2:#ece0cd;
+  --ink:#1f1611;
+  --text-soft:#5e5247;
+  --muted:#7a6d60;
+  --gold-text:linear-gradient(135deg,#d2ac57,#85621e 55%,#7d5b1c);
+  --line:rgba(122,90,40,.16);
+}
+body{background:var(--cream);color:var(--ink)}
+
+/* ---------- Header ---------- */
+.nav{color:var(--ink)}
+.nav ul a{opacity:1}
+header.scrolled,header{box-shadow:none}
+header.scrolled{background:rgba(251,246,236,.97);box-shadow:0 6px 24px rgba(80,55,20,.10)}
+.menu-btn{color:var(--ink)}
+@media (max-width:900px){
+  .nav ul{background:rgba(255,255,255,.98);border-color:var(--line);box-shadow:0 18px 40px rgba(80,55,20,.15)}
+}
+
+/* ---------- Intro ---------- */
+.pl-bg{background:radial-gradient(ellipse 70% 60% at 50% 45%,#ffffff 0%,#fbf6ec 55%,#f3e9da 100%)}
+.pl-logo{filter:drop-shadow(0 14px 30px rgba(80,55,20,.12))}
+.pl-tag{color:#85621e}
+.pl-count{color:#85621e}
+
+/* ---------- Hero over the film ---------- */
+.hero{background:var(--cream);color:var(--ink)}
+.hero::after{display:none}
+.hero-shade{background:linear-gradient(90deg,rgba(251,246,236,.96) 0%,rgba(251,246,236,.88) 40%,rgba(251,246,236,.45) 72%,rgba(251,246,236,.15) 100%),
+                       linear-gradient(0deg,rgba(251,246,236,.75) 0%,transparent 30%)}
+@media (max-width:760px){
+  .hero-shade{background:linear-gradient(0deg,rgba(251,246,236,.97) 0%,rgba(251,246,236,.9) 50%,rgba(251,246,236,.6) 100%)}
+}
+.hero h1{color:var(--ink);text-shadow:none}
+.hero h1 .gold{background:var(--gold-text);-webkit-background-clip:text;background-clip:text}
+.hero p.lead{color:var(--text-soft);text-shadow:none}
+.hero-badge{background:rgba(255,255,255,.7);color:#7a5a1a;border-color:#c9a24a}
+.hero-ctas .btn-ghost{color:var(--ink);border-color:rgba(31,22,17,.35);background:rgba(255,255,255,.6)}
+.hero-ctas .btn-ghost:hover{background:#fff}
+.film-toggle{background:rgba(255,255,255,.8);color:#7a5a1a;border-color:rgba(201,162,74,.6)}
+.film-toggle:hover{background:#fff}
+
+/* ---------- Shared accents on light ---------- */
+.eyebrow,.script{color:#85621e}
+[style*="color:var(--gold-2)"]{color:#85621e!important}
+
+/* ---------- UK's No.1 ---------- */
+#no1{background:radial-gradient(ellipse at 50% 30%,#ffffff 0%,var(--cream) 55%,var(--sand) 100%);color:var(--ink)}
+#no1::before{opacity:.35}
+#no1 h2{color:var(--ink);text-shadow:none}
+#no1 h2 .gold{background:var(--gold-text);-webkit-background-clip:text;background-clip:text}
+#no1 h2 sup{color:#85621e}
+#no1 p{color:var(--text-soft)}
+.no1-badge{color:#7a5a1a;background:rgba(255,255,255,.7)}
+.no1-source{color:var(--muted)}
+.sk-back{fill:#eadbc3}
+.sk-front{fill:#e1cdae}
+.sk-win{fill:#c9a24a;opacity:.6}
+
+/* ---------- Our Story ---------- */
+#story{background:linear-gradient(180deg,var(--sand),var(--cream));color:var(--ink)}
+#story::before{opacity:.35}
+.story-copy h2{color:var(--ink)}
+.story-copy h2 em{color:#85621e}
+.story-copy p{color:var(--text-soft)}
+.story-copy .script{color:#85621e}
+.story-img{background:radial-gradient(circle,#ffffff,#f3e9da 70%)}
+.story-img img{filter:drop-shadow(0 22px 26px rgba(80,55,20,.25))}
+
+/* ---------- Serving ideas ---------- */
+.serve{color:var(--ink);border:1px solid var(--line)}
+.serve::before{opacity:.35}
+.s1{background:linear-gradient(150deg,#ffffff,#f5ebdc)}
+.s2{background:linear-gradient(150deg,#fffaf2,#f3e2c9)}
+.s3{background:linear-gradient(150deg,#ffffff,#efe4d4)}
+.serve p{color:var(--text-soft);opacity:1}
+.serve .num{color:#c9a24a;opacity:.45}
+
+/* ---------- Contact ---------- */
+#contact{background:linear-gradient(180deg,var(--cream),var(--sand));color:var(--ink)}
+#contact::before{opacity:.35}
+.contact-copy p{color:var(--text-soft)}
+.contact-list li{color:var(--ink)}
+.contact-list svg{color:#85621e}
+form{background:#fff;border-color:var(--line);box-shadow:0 20px 50px -30px rgba(80,55,20,.35)}
+label{color:#7a5a1a}
+input,select,textarea{background:var(--cream);border-color:var(--line);color:var(--ink)}
+input:focus,select:focus,textarea:focus{border-color:#c9a24a;background:#fff}
+.form-note{color:#7a5a1a}
+
+/* ---------- Footer ---------- */
+footer{background:var(--sand);color:var(--muted);border-top:1px solid var(--line)}
+.foot{border-bottom-color:var(--line)}
+.foot h4{color:var(--ink)}
+.foot a:hover,.theme-switch{color:#7a5a1a}
+.copy .logo{color:var(--ink)}
+.theme-switch{text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- Recipes page ---------- */
+body:has(.page-hero) header,body:has(#detailView:not([hidden])) header{background:rgba(251,246,236,.97);box-shadow:0 6px 24px rgba(80,55,20,.10)}
+.page-hero{background:radial-gradient(ellipse at 75% 30%,#ffffff 0%,var(--cream) 50%,var(--sand) 100%);color:var(--ink)}
+.page-hero::before{opacity:.35}
+.page-hero h1{color:var(--ink)}
+.page-hero h1 em{background:var(--gold-text);-webkit-background-clip:text;background-clip:text;color:transparent}
+.page-hero p{color:var(--text-soft)}
+.cta{background:linear-gradient(180deg,var(--sand),var(--sand-2));color:var(--ink)}
+.cta::before{opacity:.35}
+.cta h2{color:var(--ink)}
+.cta p{color:var(--text-soft)}

@@ -1,0 +1,8 @@
+# Operating-system / OneDrive clutter
+Thumbs.db
+desktop.ini
+.DS_Store
+# Temporary files
+_*.html
+*.log
+__pycache__/
